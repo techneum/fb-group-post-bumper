@@ -46,17 +46,32 @@ import puppeteer from "puppeteer";
     // Wait for the comment box to be available
     await page.waitForSelector("div.xzsf02u.x1a2a7pz.x1n2onr6.x14wi4xw");
 
+    // Delay 10 seconds
+    await delay(10000);
+    
     // Type a comment in the identified comment box
     await page.type("div.xzsf02u.x1a2a7pz.x1n2onr6.x14wi4xw", "🖤");
+
+    // Delay 5 seconds
+    await delay(5000);
 
     // Identify and wait for the post button to be available
     const postButton = "div[aria-label='Comment'";
     await page.waitForSelector(postButton);
-
+    
     // Click the post button to submit the comment
     await page.click(postButton);
 
+    // Delay 10 seconds
+    await delay(10000);
+
     // Remove the // below if you want to automatically close pages after processing
     // await page.close();
+  }
+
+  function delay(time) {
+    return new Promise(function (resolve) {
+      setTimeout(resolve, time);
+    });
   }
 })();
