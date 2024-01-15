@@ -1,14 +1,14 @@
 {
-  "name": "scraper",
+  "name": "fb-group-post-bumper",
   "type": "module",
   "version": "1.0.0",
-  "description": "",
+  "description": "Post bumper",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node bump.js"
   },
   "keywords": [],
-  "author": "",
+  "author": "Al B",
   "license": "ISC",
   "dependencies": {
     "puppeteer": "^21.7.0"
