@@ -35,27 +35,28 @@ import puppeteer from "puppeteer";
     "https://www.facebook.com/groups/669508617739329/posts/1054203422603178/",
   ];
 
+  // Iterate through each group in the list
   for (let group of groups) {
-    // Opens new page
+    // Open a new page in the browser
     const page = await browser.newPage();
 
-    // Goes to group url
+    // Navigate to the URL of the current group
     await page.goto(group);
 
-    // Selects comment box
+    // Wait for the comment box to be available
     await page.waitForSelector("div.xzsf02u.x1a2a7pz.x1n2onr6.x14wi4xw");
 
-    // Types a comment
+    // Type a comment in the identified comment box
     await page.type("div.xzsf02u.x1a2a7pz.x1n2onr6.x14wi4xw", "🖤");
 
-    // Selects post button
+    // Identify and wait for the post button to be available
     const postButton = "div[aria-label='Comment'";
     await page.waitForSelector(postButton);
 
-    // Clicks post button
+    // Click the post button to submit the comment
     await page.click(postButton);
 
-    // Close page is disabled
+    // Remove the // below if you want to automatically close pages after processing
     // await page.close();
   }
 })();
