@@ -6,7 +6,7 @@ import puppeteer from "puppeteer";
 
 (async () => {
   const wsChromeEndpointurl =
-    "ws://127.0.0.1:9222/devtools/browser/eabde20b-efbf-4a3e-897c-a857e5ed06a9";
+    "ws://127.0.0.1:9222/devtools/browser/6eab6ba2-330f-47bc-ab98-a77f93d96cc6";
   const browser = await puppeteer.connect({
     browserWSEndpoint: wsChromeEndpointurl,
   });
@@ -46,32 +46,33 @@ import puppeteer from "puppeteer";
     // Wait for the comment box to be available
     await page.waitForSelector("div.xzsf02u.x1a2a7pz.x1n2onr6.x14wi4xw");
 
-    // Delay 10 seconds
-    await delay(10000);
-    
+    await delay(randomizer());
+
     // Type a comment in the identified comment box
     await page.type("div.xzsf02u.x1a2a7pz.x1n2onr6.x14wi4xw", "🖤");
-
-    // Delay 5 seconds
-    await delay(5000);
 
     // Identify and wait for the post button to be available
     const postButton = "div[aria-label='Comment'";
     await page.waitForSelector(postButton);
-    
+
+    await delay(randomizer());
+
     // Click the post button to submit the comment
     await page.click(postButton);
 
-    // Delay 10 seconds
-    await delay(10000);
-
     // Remove the // below if you want to automatically close pages after processing
     // await page.close();
+
+    await delay(randomizer());
   }
 
   function delay(time) {
     return new Promise(function (resolve) {
       setTimeout(resolve, time);
     });
+  }
+
+  function randomizer() {
+    return Math.floor(Math.random() * (10000 - 5000 + 1)) + 5000;
   }
 })();
